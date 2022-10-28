@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Mapper.MemberMapper">
+	<insert id="join" parameterType="com.example.demo.model.Member">
+		insert into reactmember values (#{id}, #{pw}, #{name}, #{season}, #{role})
+	</insert>
+	<select id="login" parameterType="com.example.demo.model.Member" resultType="com.example.demo.model.Member">
+		select * from reactmember where id=#{id} and pw=#{pw}
+	</select>
+	
+	<select id = "findByUserId" resultType = "com.example.demo.model.MemberDetail">
+    	SELECT
+    		id,pw
+    	FROM
+    		reactmember
+    	WHERE
+    		id = #{userId}
+    </select>
+</mapper>
