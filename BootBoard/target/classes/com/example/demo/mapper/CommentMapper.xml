@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CommentMapper">
+
+<!-- 해당 게시글에 대한 댓글 목록 가져오기 -->
+<!-- 파라미터타입은 넘겨주는 값이 하나라서 생략함 리절트 타입은 받아야와야 하는 값이 묶어서 오기 때문에 List로 받을 수 있도록 List로 받는 메서드가 있는 경로 작성 -->
+	<select id="selectAllCom" resultType="com.example.demo.model.Comment">
+		select * from comment where boardnum=#{boardnum} order by comnum desc
+	</select>
+
+	<select id="countCom" resultType="int">
+		select count(*) from comment where boardnum=#{boardnum}
+	</select>
+
+<!-- 댓글 추가 -->
+	<insert id="comAdd">
+		insert into comment values(null, #{boardnum}, #{content}, #{comwriter})
+	</insert>
+
+</mapper>
